@@ -17,8 +17,7 @@ namespace ClassCreationCycler
 
         public void GetNext(int n)
         {
-            
-            if (n<cyclers.Count && n>0)
+            if (n<cyclers.Count)
             {
                 for (int i = 0; i < n; i++)
                 {
@@ -35,8 +34,16 @@ namespace ClassCreationCycler
                     }
                     n -= cyclers.Count;
                 } while (n >= cyclers.Count);
-            }
 
+                if (n < cyclers.Count && n > 0)
+                {
+                    for (int i = 0; i < n; i++)
+                    {
+                        Console.WriteLine(cyclers[i]);
+                    }
+                }
+            }
+           
         }
         
     }
@@ -48,9 +55,7 @@ namespace ClassCreationCycler
             int n = int.Parse(Console.ReadLine());
             List<Object> cyc = new List<Object>() { 1,2,4,5,6};
             var cyclers = new Cycler(cyc);
-            cyclers.GetNext(n);
-            
-            
+            cyclers.GetNext(n);       
         }
     }
     
